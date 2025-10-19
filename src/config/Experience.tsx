@@ -45,7 +45,7 @@ export const experiences: Experience[] = [
       '*Outbound Calling Platform Agent*: Deployed outbound calling agents capable of scheduling, executing, and logging calls for lead generation and customer feedback with seamless voice pipeline integration.',
     ],
     startDate: 'June 2025',
-    endDate: 'Present',
+    endDate: 'August 2025',
     technologies: [
       {
         name: 'Crewai',
