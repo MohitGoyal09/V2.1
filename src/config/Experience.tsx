@@ -7,6 +7,10 @@ import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
 import Pytorch from '@/components/technologies/Pytorch';
 
+
+
+
+
 export interface Technology {
   name: string;
   href: string;
@@ -33,6 +37,72 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     isCurrent: true,
+    company: 'KaraX.ai',
+    position: 'Software Engineering Intern',
+    location: 'Hyderabad, India (Remote)',
+    image: '/company/Karax.jpg',
+    description: [
+      '*Currently:* Contributing to the development of a scalable and efficient AI agents using Langchain, LangGraph, and Next.js.',
+    ],
+    startDate: 'October 2025',
+    endDate: 'Present',
+    technologies: [
+      {
+        name: 'Langchain',
+        href: 'https://langchain.com/',
+        icon: <Langchain />,
+      },
+      {
+        name: 'LangGraph',
+        href: 'https://langgraph.dev/',
+        icon: <LangGraph />,
+      },
+
+      {
+        name: 'Next.js',
+        href: 'https://nextjs.org/',
+        icon: <NextJs />,
+      },
+
+      {
+        name: 'Fastapi  ',
+        href: 'https://fastapi.tiangolo.com/',
+        icon: <Fastapi />,
+      },
+    ],
+    website: 'https://karax.ai/',
+    linkedin: 'https://www.linkedin.com/company/karax-ai',
+    // github: 'https://github.com/Kartavya-AI',
+  },
+
+  {
+    isCurrent: true,
+    company: 'RAAPID INC',
+    position: 'ML Researcher Intern',
+    location: 'Louisville, US (Remote)',
+    image: '/company/raapid.png',
+    description: [
+      '*Worked on Large Language Model (LLM) fine-tuning* and co-authored a research paper introducing a novel instruction tuning framework.',
+      '*Co-developed GRIT (Geometric Reprojection Instruction Tuning)*, a novel framework that fine-tunes only *0.997% of LLM parameters* while outperforming full fine-tuning and LoRA on standard benchmarks (*BLEU ↑26.2, ROUGE-L ↑34.9 on Alpaca*).',
+      'Fine-tuned multiple LLMs (*GPT-2 355M, LLaMA-3B, Mistral-7B*) achieving **30% parameter savings** with **40% reduction in compute & memory costs**, without compromising accuracy.',
+      'Conducted extensive ablation studies, validating GRIT’s *geometry-aware updates* with **+2.1 BLEU and +2.5 ROUGE-L gains** over LoRA, QLoRA, and AdaLoRA.',
+      'Benchmarked GRIT across diverse NLP tasks (*abstractive QA, classification, reasoning*) on datasets such as **Alpaca, Dolly-15k, BoolQ, GSM8K**, consistently outperforming existing parameter-efficient tuning methods.',
+      'Collaborated on research paper drafting, presenting *GRIT as a scalable and efficient alternative* for instruction tuning in large-scale LLMs.',
+    ],
+    startDate: 'April 2025',
+    endDate: 'Present',
+    website: 'https://www.raapidinc.com/',
+    technologies: [
+      {
+        name: 'Pytorch',
+        href: 'https://pytorch.org/',
+        icon: <Pytorch />,
+      },
+    ],
+    linkedin: 'https://www.linkedin.com/company/raapid',
+  },
+  {
+    isCurrent: false,
     company: 'Kartavya Technology',
     position: 'AI Agent Developer Intern',
     location: 'Bengaluru, India (Remote)',
@@ -90,31 +160,5 @@ export const experiences: Experience[] = [
     website: 'https://kartavya.tech',
     linkedin: 'https://www.linkedin.com/company/kartavyatech',
     github: 'https://github.com/Kartavya-AI',
-  },
-  {
-    isCurrent: true,
-    company: 'RAAPID INC',
-    position: 'ML Researcher Intern',
-    location: 'Louisville, US (Remote)',
-    image: '/company/raapid.png',
-    description: [
-      '*Worked on Large Language Model (LLM) fine-tuning* and co-authored a research paper introducing a novel instruction tuning framework.',
-      '*Co-developed GRIT (Geometric Reprojection Instruction Tuning)*, a novel framework that fine-tunes only *0.997% of LLM parameters* while outperforming full fine-tuning and LoRA on standard benchmarks (*BLEU ↑26.2, ROUGE-L ↑34.9 on Alpaca*).',
-      'Fine-tuned multiple LLMs (*GPT-2 355M, LLaMA-3B, Mistral-7B*) achieving **30% parameter savings** with **40% reduction in compute & memory costs**, without compromising accuracy.',
-      'Conducted extensive ablation studies, validating GRIT’s *geometry-aware updates* with **+2.1 BLEU and +2.5 ROUGE-L gains** over LoRA, QLoRA, and AdaLoRA.',
-      'Benchmarked GRIT across diverse NLP tasks (*abstractive QA, classification, reasoning*) on datasets such as **Alpaca, Dolly-15k, BoolQ, GSM8K**, consistently outperforming existing parameter-efficient tuning methods.',
-      'Collaborated on research paper drafting, presenting *GRIT as a scalable and efficient alternative* for instruction tuning in large-scale LLMs.',
-    ],
-    startDate: 'April 2025',
-    endDate: 'Present',
-    website: 'https://www.raapidinc.com/',
-    technologies: [
-      {
-        name: 'Pytorch',
-        href: 'https://pytorch.org/',
-        icon: <Pytorch />,
-      },
-    ],
-    linkedin: 'https://www.linkedin.com/company/raapid',
   },
 ];
