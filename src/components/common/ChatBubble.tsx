@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { chatSuggestions } from '@/config/ChatPrompt';
-import { heroConfig } from '@/config/Hero';
+
 import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
 import { cn } from '@/lib/utils';
 import React, { useEffect, useRef, useState } from 'react';
