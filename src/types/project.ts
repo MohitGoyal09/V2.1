@@ -10,6 +10,7 @@ export interface Project {
   details: boolean;
   projectDetailsPageSlug: string;
   isWorking: boolean;
+  category: 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research';
 }
 
 export interface ProjectCaseStudyFrontmatter {
@@ -27,6 +28,7 @@ export interface ProjectCaseStudyFrontmatter {
   challenges?: string[];
   learnings?: string[];
   isPublished: boolean;
+  category: 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research';
 }
 
 export interface ProjectCaseStudy {

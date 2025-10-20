@@ -30,6 +30,7 @@ export const projects: Project[] = [
     details: true,
     projectDetailsPageSlug: '/projects/artificial-guruji',
     isWorking: true,
+    category: 'full-stack',
   },
   {
     title: 'Music Academy',
@@ -46,6 +47,7 @@ export const projects: Project[] = [
     details: true,
     projectDetailsPageSlug: '/projects/music-academy',
     isWorking: true,
+    category: 'frontend',
   },
   {
     title: 'GuardianReport',
@@ -67,6 +69,7 @@ export const projects: Project[] = [
     details: true,
     projectDetailsPageSlug: '/projects/guardian-report',
     isWorking: true,
+    category: 'full-stack',
   },
   {
     title: 'Food Vision Transformer',
@@ -81,5 +84,6 @@ export const projects: Project[] = [
     details: true,
     projectDetailsPageSlug: '/projects/food-vision-transformer',
     isWorking: true,
+    category: 'research',
   },
 ];

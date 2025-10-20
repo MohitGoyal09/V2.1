@@ -21,6 +21,7 @@ import ArrowRight from '../svgs/ArrowRight';
 import Github from '../svgs/Github';
 import PlayCircle from '../svgs/PlayCircle';
 import Website from '../svgs/Website';
+import { Badge } from '../ui/badge';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 interface ProjectCardProps {
@@ -29,6 +30,31 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
+  const getCategoryLabel = (category: string) => {
+    const labels: Record<string, string> = {
+      'full-stack': 'Full Stack',
+      frontend: 'Frontend',
+      backend: 'Backend',
+      ml: 'Machine Learning',
+      research: 'Research',
+    };
+    return labels[category] || category;
+  };
+
+  const getCategoryVariant = (category: string) => {
+    const variants: Record<
+      string,
+      'default' | 'secondary' | 'destructive' | 'outline'
+    > = {
+      'full-stack': 'default',
+      frontend: 'secondary',
+      backend: 'outline',
+      ml: 'destructive',
+      research: 'secondary',
+    };
+    return variants[category] || 'outline';
+  };
 
   return (
     <Card className="group h-full w-full overflow-hidden transition-all p-0 border-gray-100 dark:border-gray-800 shadow-none">
@@ -41,11 +67,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
             width={1920}
             height={1080}
           />
+          {/* Category Badge */}
+          <div className="absolute top-3 left-3">
+            <Badge
+              variant={getCategoryVariant(project.category)}
+              className="text-xs"
+            >
+              {getCategoryLabel(project.category)}
+            </Badge>
+          </div>
           {project.video && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <div className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:backdrop-blur-xs">
-                  <button className="flex size-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-colors duration-200 group-hover:cursor-pointer hover:bg-white/30">
+                  <button
+                    className="flex size-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-colors duration-200 group-hover:cursor-pointer hover:bg-white/30"
+                    aria-label="Play Project Video"
+                    title="Play Project Video"
+                  >
                     <PlayCircle />
                   </button>
                 </div>
