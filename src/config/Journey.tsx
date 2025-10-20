@@ -1,6 +1,6 @@
-import React from 'react';
 import CV from '@/components/svgs/CV';
 import Calender from '@/components/svgs/Calender';
+import React from 'react';
 
 export type JourneyItem = {
   name: string;
@@ -24,6 +24,8 @@ export const journeyItems: JourneyItem[] = [
   },
 ];
 
-export default {
+const journey = {
   journeyItems,
 };
+
+export default journey;
