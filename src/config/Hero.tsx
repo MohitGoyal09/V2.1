@@ -27,7 +27,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Mohit ',
-  title: 'Full Stack & AI Product Developer',
+  title: 'ML Engineer & Full Stack Developer',
   avatar: '/assets/logo.png',
 
   // Skills Configuration
@@ -87,7 +87,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      '🔥 Crafting intelligent web apps with {skills:0} {skills:1} {skills:2} — powered by {skills:7} {skills:9} & {skills:8}.',
+      '🔥 Building intelligent web applications with {skills:0} {skills:1} {skills:2} — powered by {skills:7} {skills:9} & {skills:8} 🧠 Specializing in ML model deployment and full-stack AI products.',
   },
 
   // Buttons Configuration

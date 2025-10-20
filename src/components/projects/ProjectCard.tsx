@@ -38,6 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       backend: 'Backend',
       ml: 'Machine Learning',
       research: 'Research',
+      ai: 'AI',
     };
     return labels[category] || category;
   };
@@ -52,6 +53,34 @@ export function ProjectCard({ project }: ProjectCardProps) {
       backend: 'outline',
       ml: 'destructive',
       research: 'secondary',
+      ai: 'destructive',
+    };
+    return variants[category] || 'outline';
+  };
+
+  const getSecondaryCategoryLabel = (category: string) => {
+    const labels: Record<string, string> = {
+      'full-stack': 'Full Stack',
+      frontend: 'Frontend',
+      backend: 'Backend',
+      ml: 'ML',
+      research: 'Research',
+      ai: 'AI',
+    };
+    return labels[category] || category;
+  };
+
+  const getSecondaryCategoryVariant = (category: string) => {
+    const variants: Record<
+      string,
+      'default' | 'secondary' | 'destructive' | 'outline'
+    > = {
+      'full-stack': 'outline',
+      frontend: 'outline',
+      backend: 'outline',
+      ml: 'secondary',
+      research: 'outline',
+      ai: 'secondary',
     };
     return variants[category] || 'outline';
   };
@@ -67,14 +96,22 @@ export function ProjectCard({ project }: ProjectCardProps) {
             width={1920}
             height={1080}
           />
-          {/* Category Badge */}
-          <div className="absolute top-3 left-3">
+          {/* Category Badges */}
+          <div className="absolute top-3 left-3 flex flex-col gap-1">
             <Badge
               variant={getCategoryVariant(project.category)}
               className="text-xs"
             >
               {getCategoryLabel(project.category)}
             </Badge>
+            {project.secondaryCategory && (
+              <Badge
+                variant={getSecondaryCategoryVariant(project.secondaryCategory)}
+                className="text-xs"
+              >
+                {getSecondaryCategoryLabel(project.secondaryCategory)}
+              </Badge>
+            )}
           </div>
           {project.video && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

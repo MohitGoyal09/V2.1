@@ -11,6 +11,13 @@ export interface Project {
   projectDetailsPageSlug: string;
   isWorking: boolean;
   category: 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research';
+  secondaryCategory?:
+    | 'ml'
+    | 'ai'
+    | 'research'
+    | 'full-stack'
+    | 'frontend'
+    | 'backend';
 }
 
 export interface ProjectCaseStudyFrontmatter {
@@ -29,6 +36,13 @@ export interface ProjectCaseStudyFrontmatter {
   learnings?: string[];
   isPublished: boolean;
   category: 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research';
+  secondaryCategory?:
+    | 'ml'
+    | 'ai'
+    | 'research'
+    | 'full-stack'
+    | 'frontend'
+    | 'backend';
 }
 
 export interface ProjectCaseStudy {

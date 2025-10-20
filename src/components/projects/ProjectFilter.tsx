@@ -1,11 +1,18 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { type Project } from '@/types/project';
 import { useState } from 'react';
 
-export type ProjectCategory = 'all' | 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research';
+export type ProjectCategory =
+  | 'all'
+  | 'full-stack'
+  | 'frontend'
+  | 'backend'
+  | 'ml'
+  | 'research'
+  | 'ai';
 
 interface ProjectFilterProps {
   projects: Project[];
@@ -19,6 +26,7 @@ const categoryLabels: Record<ProjectCategory, string> = {
   backend: 'Backend',
   ml: 'Machine Learning',
   research: 'Research',
+  ai: 'AI',
 };
 
 const categoryDescriptions: Record<ProjectCategory, string> = {
@@ -28,27 +36,47 @@ const categoryDescriptions: Record<ProjectCategory, string> = {
   backend: 'Server-side applications and APIs',
   ml: 'Machine learning models and applications',
   research: 'Research implementations and academic projects',
+  ai: 'AI-powered applications and intelligent systems',
 };
 
-export function ProjectFilter({ projects, onFilterChange }: ProjectFilterProps) {
+export function ProjectFilter({
+  projects,
+  onFilterChange,
+}: ProjectFilterProps) {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
 
   const getProjectCount = (category: ProjectCategory): number => {
     if (category === 'all') return projects.length;
-    return projects.filter((project) => project.category === category).length;
+    return projects.filter(
+      (project) =>
+        project.category === category || project.secondaryCategory === category,
+    ).length;
   };
 
   const handleCategoryChange = (category: ProjectCategory) => {
     setActiveCategory(category);
-    
-    const filteredProjects = category === 'all' 
-      ? projects 
-      : projects.filter((project) => project.category === category);
-    
+
+    const filteredProjects =
+      category === 'all'
+        ? projects
+        : projects.filter(
+            (project) =>
+              project.category === category ||
+              project.secondaryCategory === category,
+          );
+
     onFilterChange(filteredProjects);
   };
 
-  const categories: ProjectCategory[] = ['all', 'full-stack', 'frontend', 'backend', 'ml', 'research'];
+  const categories: ProjectCategory[] = [
+    'all',
+    'full-stack',
+    'frontend',
+    'backend',
+    'ml',
+    'research',
+    'ai',
+  ];
 
   return (
     <div className="space-y-4">
@@ -56,7 +84,7 @@ export function ProjectFilter({ projects, onFilterChange }: ProjectFilterProps) 
         {categories.map((category) => {
           const count = getProjectCount(category);
           const isActive = activeCategory === category;
-          
+
           return (
             <Button
               key={category}
@@ -67,8 +95,8 @@ export function ProjectFilter({ projects, onFilterChange }: ProjectFilterProps) 
             >
               {categoryLabels[category]}
               {count > 0 && (
-                <Badge 
-                  variant={isActive ? 'secondary' : 'outline'} 
+                <Badge
+                  variant={isActive ? 'secondary' : 'outline'}
                   className="ml-2 text-xs"
                 >
                   {count}
@@ -78,7 +106,7 @@ export function ProjectFilter({ projects, onFilterChange }: ProjectFilterProps) 
           );
         })}
       </div>
-      
+
       <div className="text-sm text-muted-foreground">
         {categoryDescriptions[activeCategory]}
       </div>

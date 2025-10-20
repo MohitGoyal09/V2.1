@@ -24,5 +24,5 @@ export const mySkills = [
 
 export const about = {
   name: 'Mohit Goyal',
-  description: `I’m a Full Stack Developer and AI/ML Builder who loves turning ideas into impactful products. From deploying MVPs to contributing to open source, I enjoy combining web development and deep learning to solve real-world problems.`,
+  description: `I'm a Full Stack Developer and AI/ML Engineer who loves turning ideas into impactful products. I specialize in building intelligent web applications that combine cutting-edge AI with robust full-stack architecture.`,
 };
