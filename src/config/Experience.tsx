@@ -27,6 +27,7 @@ export interface Experience {
   github?: string;
   technologies: Technology[];
   isCurrent: boolean;
+  isBlur?: boolean;
 }
 
 export const experiences: Experience[] = [
