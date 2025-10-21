@@ -1,22 +1,20 @@
 'use client';
 
+import { quotes } from '@/config/Quote';
 import { useEffect, useState } from 'react';
 
 import Container from './Container';
-import { quotes } from '@/config/Quote';
 
 export const Quote = () => {
   const [currentQuote, setCurrentQuote] = useState<{
     quote: string;
     author: string;
-  } | null>(null);
+  }>(quotes[0]); // Initialize with first quote to prevent flicker
 
   useEffect(() => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     setCurrentQuote(randomQuote);
   }, []);
-
-  if (!currentQuote) return null;
 
   const { quote, author } = currentQuote;
 
@@ -35,7 +33,7 @@ export const Quote = () => {
           “{quote}”
         </p>
         <p className="text-right italic text-pretty font-mono text-highlight">
-          — {author}
+          ~ {author}
         </p>
       </div>
     </Container>

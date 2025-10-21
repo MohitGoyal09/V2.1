@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
     company: 'KaraX.ai',
     position: 'Software Engineering Intern',
     location: 'Hyderabad, India (Remote)',
-    image: '/company/Karax.jpg',
+    image: '/company/karax.jpg',
     description: [
       '*Currently:* Contributing to the development of a scalable and efficient AI agents using Langchain, LangGraph, and Next.js.',
     ],

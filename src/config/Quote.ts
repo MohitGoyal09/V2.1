@@ -24,4 +24,12 @@ export const quotes = [
     quote: `I’ll take a potato chip… AND EAT IT!`,
     author: 'Light Yagami, Death Note',
   },
+  {
+    quote: 'As long as I live, there are infinite chances',
+    author: 'Monkey D. Luffy, One Piece',
+  },
+  {
+    quote: 'The world isn\'t perfect. But that\'s the way it is.',
+    author: 'Edward Elric, Fullmetal Alchemist',
+  }
 ];
