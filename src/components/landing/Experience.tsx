@@ -39,7 +39,7 @@ export default function Experience() {
               key={experience.company} 
               experience={experience}
               isCollapsed={!isExpanded}
-              onToggle={() => toggleExperience(experience.company)}
+              onToggle={isFirst ? undefined : () => toggleExperience(experience.company)}
             />
           );
         })}
