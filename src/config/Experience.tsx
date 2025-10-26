@@ -33,10 +33,10 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     isCurrent: true,
-    company: 'KaraX.ai',
+    company: 'C3alabs',
     position: 'Software Engineering Intern',
-    location: 'Hyderabad, India (Remote)',
-    image: '/company/karax.jpg',
+    location: 'United States (Remote)',
+    image: '/company/c3alabs.jpg',
     description: [
       '*Currently:* Contributing to the development of a scalable and efficient AI agents using Langchain, LangGraph, and Next.js.',
     ],
@@ -66,8 +66,8 @@ export const experiences: Experience[] = [
         icon: <Fastapi />,
       },
     ],
-    website: 'https://karax.ai/',
-    linkedin: 'https://www.linkedin.com/company/karax-ai',
+    website: 'https://www.c3alabs.com/',
+    linkedin: 'https://www.linkedin.com/company/c3alabs',
     // github: 'https://github.com/Kartavya-AI',
   },
 

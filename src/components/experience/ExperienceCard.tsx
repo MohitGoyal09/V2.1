@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import Skill from '../common/Skill';
+import ChevronDown from '../svgs/ChevronDown';
 import Github from '../svgs/Github';
 import LinkedIn from '../svgs/LinkedIn';
 import Website from '../svgs/Website';
@@ -13,13 +14,15 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 interface ExperienceCardProps {
   experience: Experience;
+  isCollapsed?: boolean;
+  onToggle?: () => void;
 }
 
 const parseDescription = (text: string): string => {
   return text.replace(/\*(.*?)\*/g, '<b>$1</b>');
 };
 
-export function ExperienceCard({ experience }: ExperienceCardProps) {
+export function ExperienceCard({ experience, isCollapsed = false, onToggle }: ExperienceCardProps) {
   return (
     <div className="flex flex-col gap-4">
       {/* Company Header */}
@@ -105,6 +108,19 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
                   Working
                 </div>
               )}
+              {onToggle && (
+                <button
+                  onClick={onToggle}
+                  className="ml-2 size-4 text-neutral-500 hover:text-neutral-300 transition-colors"
+                >
+                  <ChevronDown 
+                    className={cn(
+                      "transition-transform duration-200",
+                      isCollapsed ? "rotate-0" : "rotate-180"
+                    )} 
+                  />
+                </button>
+              )}
             </div>
             <p>{experience.position}</p>
           </div>
@@ -119,35 +135,40 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
         </div>
       </div>
 
-      {/* Technologies */}
-      <div>
-        <h4 className="text-md mt-4 mb-2 font-semibold">Technologies</h4>
-        <div className="flex flex-wrap gap-2">
-          {experience.technologies.map((technology, techIndex: number) => (
-            <Skill
-              key={techIndex}
-              name={technology.name}
-              href={technology.href}
-            >
-              {technology.icon}
-            </Skill>
-          ))}
-        </div>
-      </div>
+      {/* Technologies and Description - only show when not collapsed */}
+      {!isCollapsed && (
+        <>
+          {/* Technologies */}
+          <div>
+            <h4 className="text-md mt-4 mb-2 font-semibold">Technologies</h4>
+            <div className="flex flex-wrap gap-2">
+              {experience.technologies.map((technology, techIndex: number) => (
+                <Skill
+                  key={techIndex}
+                  name={technology.name}
+                  href={technology.href}
+                >
+                  {technology.icon}
+                </Skill>
+              ))}
+            </div>
+          </div>
 
-      {/* Description */}
-      <div className="text-secondary flex flex-col">
-        {experience.description.map(
-          (description: string, descIndex: number) => (
-            <p
-              key={descIndex}
-              dangerouslySetInnerHTML={{
-                __html: `• ${parseDescription(description)}`,
-              }}
-            />
-          ),
-        )}
-      </div>
+          {/* Description */}
+          <div className="text-secondary flex flex-col">
+            {experience.description.map(
+              (description: string, descIndex: number) => (
+                <p
+                  key={descIndex}
+                  dangerouslySetInnerHTML={{
+                    __html: `• ${parseDescription(description)}`,
+                  }}
+                />
+              ),
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

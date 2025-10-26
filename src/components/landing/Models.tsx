@@ -1,23 +1,23 @@
 'use client';
 
-import { projects } from '@/config/Projects';
+import { models } from '@/config/Models';
 import { Link } from 'next-view-transitions';
 import React from 'react';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
-import { ProjectList } from '../projects/ProjectList';
+import { ModelList } from '../models/ModelList';
 import { Button } from '../ui/button';
 
-export default function Projects() {
+export default function Models() {
   return (
     <Container className="mt-20">
-      <SectionHeading subHeading="Featured" heading="Projects" />
+      <SectionHeading subHeading="Research" heading="Models" />
 
-      <ProjectList className="mt-8" projects={projects.slice(0, 2)} />
+      <ModelList className="mt-8" models={models.slice(0, 2)} />
       <div className="mt-8 flex justify-center">
         <Button variant="outline">
-          <Link href="/projects">Show all projects</Link>
+          <Link href="/models">Show all models</Link>
         </Button>
       </div>
     </Container>

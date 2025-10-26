@@ -5,6 +5,7 @@ import CTA from '@/components/landing/CTA';
 import Experience from '@/components/landing/Experience';
 import Github from '@/components/landing/Github';
 import Hero from '@/components/landing/Hero';
+import Models from '@/components/landing/Models';
 // import Setup from '@/components/landing/Setup';
 // import Journey from '@/components/landing/Journey';
 import Work from '@/components/landing/Projects';
@@ -16,6 +17,7 @@ export default function page() {
       <Hero />
       <Experience />
       <Work />
+      <Models />
       <About />
       <Github />
       <Blog />
