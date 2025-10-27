@@ -52,7 +52,8 @@ export function ModelFilter({
     if (category === 'all') return models.length;
     return models.filter(
       (model) =>
-        model.category === category || model.secondaryCategory === category,
+        model.category === category || 
+        (model.secondaryCategory && model.secondaryCategory === category),
     ).length;
   };
 
@@ -65,7 +66,7 @@ export function ModelFilter({
         : models.filter(
             (model) =>
               model.category === category ||
-              model.secondaryCategory === category,
+              (model.secondaryCategory && model.secondaryCategory === category),
           );
 
     onFilterChange(filteredModels);
