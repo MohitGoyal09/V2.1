@@ -13,7 +13,12 @@ export type ModelCategory =
   | 'storytelling'
   | 'moe'
   | 'compact'
-  | 'educational';
+  | 'educational'
+  | 'research'
+  | 'nlp'
+  | 'computer-vision'
+  | 'generative-ai'
+  | 'production';
 
 interface ModelFilterProps {
   models: Model[];
@@ -29,6 +34,11 @@ const categoryLabels: Record<ModelCategory, string> = {
   'moe': 'MoE',
   'compact': 'Compact',
   'educational': 'Educational',
+  'research': 'Research',
+  'nlp': 'NLP',
+  'computer-vision': 'Computer Vision',
+  'generative-ai': 'Generative AI',
+  'production': 'Production',
 };
 
 const categoryDescriptions: Record<ModelCategory, string> = {
@@ -40,6 +50,11 @@ const categoryDescriptions: Record<ModelCategory, string> = {
   'moe': 'Mixture of Experts architectures and implementations',
   'compact': 'Efficient and lightweight model implementations',
   'educational': 'Educational models and research frameworks',
+  'research': 'Research-focused models and experimental implementations',
+  'nlp': 'Natural Language Processing models and tools',
+  'computer-vision': 'Computer vision and image processing models',
+  'generative-ai': 'Generative AI models and creative applications',
+  'production': 'Production-ready models and implementations',
 };
 
 export function ModelFilter({
@@ -81,6 +96,11 @@ export function ModelFilter({
     'moe',
     'compact',
     'educational',
+    'research',
+    'nlp',
+    'computer-vision',
+    'generative-ai',
+    'production',
   ];
 
   return (
