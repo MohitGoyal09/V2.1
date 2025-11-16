@@ -1,7 +1,7 @@
-import Crewai from '@/components/technologies/Crewai';
+
 import Fastapi from '@/components/technologies/Fastapi';
 import LangGraph from '@/components/technologies/LangGraph';
-import MongoDB from '@/components/technologies/MongoDB';
+
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
