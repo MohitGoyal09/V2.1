@@ -16,9 +16,9 @@ export default function About() {
         <Image
           src="/assets/logo.png"
           alt="About"
-          width={100}
-          height={100}
-          className="border-secondary size-60 rounded-md border-2 bg-blue-300 dark:bg-yellow-300"
+          width={240}
+          height={240}
+          className="border-secondary size-60 rounded-md border-2 bg-blue-300 dark:bg-yellow-300 object-contain"
         />
         <div className="mt-4">
           <h3 className="text-2xl font-bold">{about.name}</h3>

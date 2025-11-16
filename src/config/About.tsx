@@ -12,17 +12,15 @@ import TypeScript from '@/components/technologies/TypeScript';
 export const mySkills = [
   <ReactIcon key="react" />,
   <TypeScript key="typescript" />,
-  <MongoDB key="mongodb" />,
   <NextJs key="nextjs" />,
   <NodeJs key="nodejs" />,
   <PostgreSQL key="postgresql" />,
   <Pytorch key="pytorch" />,
-  <Crewai key="crewai" />,
   <LangGraph key="langgraph" />,
   <Fastapi key="fastapi" />,
 ];
 
 export const about = {
   name: 'Mohit Goyal',
-  description: `I'm a Full Stack Developer and AI/ML Engineer who loves turning ideas into impactful products. I specialize in building intelligent web applications that combine cutting-edge AI with robust full-stack architecture.`,
+  description: `I'm 19, implementing LLM architectures from research (LLaMA, RoBERTa, BERT) and deploying production-grade GenAI agent systems with PyTorch, LangChain, and FastAPI on GCP.`,
 };
