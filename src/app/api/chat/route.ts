@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
       },
     };
 
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:streamGenerateContent?alt=sse&key=${apiKey}`;
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:streamGenerateContent?alt=sse&key=${apiKey}`;
 
     const response = await fetch(geminiUrl, {
       method: 'POST',
@@ -141,7 +141,47 @@ export async function POST(request: NextRequest) {
     });
 
     if (!response.ok) {
-      throw new Error(`Gemini API error: ${response.status}`);
+      // Try to get error details from response
+      let errorMessage = `Gemini API error: ${response.status}`;
+      let errorDetails: any = null;
+
+      try {
+        const errorBody = await response.text();
+        if (errorBody) {
+          try {
+            errorDetails = JSON.parse(errorBody);
+            errorMessage = errorDetails?.error?.message || errorDetails?.message || errorMessage;
+          } catch {
+            errorMessage = errorBody || errorMessage;
+          }
+        }
+      } catch {
+        // If we can't read the error body, use the status code
+      }
+
+      // Handle rate limiting (429) specifically
+      if (response.status === 429) {
+        const retryAfter = response.headers.get('retry-after');
+        return NextResponse.json(
+          {
+            error: 'Gemini API rate limit exceeded. Please try again later.',
+            message: errorMessage,
+            retryAfter: retryAfter ? parseInt(retryAfter, 10) : 60,
+          },
+          {
+            status: 429,
+            headers: {
+              'Retry-After': retryAfter || '60',
+            },
+          },
+        );
+      }
+
+      // For other errors, throw with more details
+      const error = new Error(errorMessage) as Error & { status?: number; details?: any };
+      error.status = response.status;
+      error.details = errorDetails;
+      throw error;
     }
 
     const encoder = new TextEncoder();
@@ -212,6 +252,18 @@ export async function POST(request: NextRequest) {
           details: error.errors,
         },
         { status: 400 },
+      );
+    }
+
+    // Handle errors with status codes (like Gemini API errors)
+    if (error && typeof error === 'object' && 'status' in error) {
+      const statusError = error as Error & { status?: number; details?: any };
+      return NextResponse.json(
+        {
+          error: (statusError as any)?.message || 'API request failed',
+          details: statusError.details,
+        },
+        { status: statusError.status || 500 },
       );
     }
 

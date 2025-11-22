@@ -15,7 +15,7 @@ export const projects: Project[] = [
       'Artificial Guruji is an AI-powered exam preparation platform that uses advanced AI to generate personalised study materials and customised study schedules. It helps users to improve test scores, adapt to individual learning styles, and save preparation time. The platform has over 50,000 users and is used in over 100 universities.',
     image: '/project/lms.jpg',
     video: '',
-    link: 'https://lms-three-theta.vercel.app/',
+    link: 'https://guruji-chi.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'React', icon: <ReactIcon key="react" /> },
@@ -33,24 +33,7 @@ export const projects: Project[] = [
     category: 'full-stack',
     secondaryCategory: 'ai',
   },
-  {
-    title: 'Music Academy',
-    description:
-      'Built a responsive and visually appealing landing page for a music institution using Next.js and Acerenity UI. This project demonstrates expertise in creating clean, modern designs with seamless navigation and optimized performance.',
-    image: '/project/music.jpg',
-    video: '',
-    link: 'https://musicacademy-iota.vercel.app/',
-    technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'Vercel', icon: <Vercel key="vercel" /> },
-    ],
-    github: 'https://github.com/MohitGoyal09/musicacademy',
-    live: 'https://musicacademy-iota.vercel.app/',
-    details: true,
-    projectDetailsPageSlug: '/projects/music-academy',
-    isWorking: true,
-    category: 'frontend',
-  },
+  
   {
     title: 'GuardianReport',
     description:
@@ -73,6 +56,24 @@ export const projects: Project[] = [
     isWorking: true,
     category: 'full-stack',
     secondaryCategory: 'ai',
+  },
+  {
+    title: 'Music Academy',
+    description:
+      'Built a responsive and visually appealing landing page for a music institution using Next.js and Acerenity UI. This project demonstrates expertise in creating clean, modern designs with seamless navigation and optimized performance.',
+    image: '/project/music.jpg',
+    video: '',
+    link: 'https://musicacademy-iota.vercel.app/',
+    technologies: [
+      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
+    ],
+    github: 'https://github.com/MohitGoyal09/musicacademy',
+    live: 'https://musicacademy-iota.vercel.app/',
+    details: true,
+    projectDetailsPageSlug: '/projects/music-academy',
+    isWorking: true,
+    category: 'frontend',
   },
   {
     title: 'Food Vision Transformer',
