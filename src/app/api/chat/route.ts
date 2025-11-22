@@ -5,6 +5,20 @@ import * as z from 'zod';
 
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
+interface GeminiErrorDetails {
+  error?: {
+    message?: string;
+    code?: number;
+    status?: string;
+  };
+  message?: string;
+}
+
+interface ApiError extends Error {
+  status?: number;
+  details?: GeminiErrorDetails | null;
+}
+
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
 
@@ -143,7 +157,7 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       // Try to get error details from response
       let errorMessage = `Gemini API error: ${response.status}`;
-      let errorDetails: any = null;
+      let errorDetails: GeminiErrorDetails | null = null;
 
       try {
         const errorBody = await response.text();
@@ -178,7 +192,7 @@ export async function POST(request: NextRequest) {
       }
 
       // For other errors, throw with more details
-      const error = new Error(errorMessage) as Error & { status?: number; details?: any };
+      const error = new Error(errorMessage) as ApiError;
       error.status = response.status;
       error.details = errorDetails;
       throw error;
@@ -257,10 +271,10 @@ export async function POST(request: NextRequest) {
 
     // Handle errors with status codes (like Gemini API errors)
     if (error && typeof error === 'object' && 'status' in error) {
-      const statusError = error as Error & { status?: number; details?: any };
+      const statusError = error as ApiError;
       return NextResponse.json(
         {
-          error: (statusError as any)?.message || 'API request failed',
+          error: statusError.message || 'API request failed',
           details: statusError.details,
         },
         { status: statusError.status || 500 },
