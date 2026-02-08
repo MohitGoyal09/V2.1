@@ -1,14 +1,20 @@
 'use client';
 
 import { githubConfig } from '@/config/Github';
+import { PortfolioMode } from '@/stores/modeStore';
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 
 import Container from '../common/Container';
 import GithubIcon from '../svgs/Github';
 import { Button } from '../ui/button';
+
+interface GithubProps {
+  mode: PortfolioMode;
+}
 
 const ActivityCalendar = dynamic(
   () => import('react-activity-calendar').then((mod) => mod.default),
@@ -43,7 +49,7 @@ function filterLastYear(contributions: ContributionItem[]): ContributionItem[] {
   });
 }
 
-export default function Github() {
+export default function Github({}: GithubProps) {
   const [contributions, setContributions] = useState<ContributionItem[]>([]);
   const [totalContributions, setTotalContributions] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -144,16 +150,16 @@ export default function Github() {
 
         {/* Content */}
         {isLoading ? (
-          <div className="flex items-center justify-center py-16">
+          <Card className="flex items-center justify-center py-16 border-gray-100 dark:border-gray-800 shadow-none bg-background/50 backdrop-blur-sm">
             <div className="text-center">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
               <p className="text-sm text-muted-foreground">
                 {githubConfig.loadingState.description}
               </p>
             </div>
-          </div>
+          </Card>
         ) : hasError || contributions.length === 0 ? (
-          <div className="p-8 text-center text-muted-foreground border-2 border-dashed border-border rounded-xl">
+          <Card className="p-8 text-center text-muted-foreground border-dashed border-border rounded-xl shadow-none bg-background/50">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
               <GithubIcon className="w-8 h-8" />
             </div>
@@ -170,15 +176,16 @@ export default function Github() {
                 {githubConfig.errorState.buttonText}
               </Link>
             </Button>
-          </div>
+          </Card>
         ) : (
-          <div className="relative overflow-hidden">
-            <div className="relative bg-background/50 backdrop-blur-sm rounded-lg border border-dashed dark:border-white/10 border-black/20 p-6">
-              <div className="w-full overflow-x-auto ">
+          <Card className="relative overflow-hidden w-full border-gray-100 dark:border-gray-800 shadow-none bg-background/50 backdrop-blur-sm">
+            <CardContent className="p-6">
+              <div className="w-full flex justify-center [&_svg]:!w-full [&_svg]:!h-auto overflow-hidden">
                 <ActivityCalendar
                   data={contributions}
                   blockSize={12}
                   blockMargin={4}
+                  blockRadius={2}
                   fontSize={githubConfig.fontSize}
                   colorScheme={theme === 'dark' ? 'dark' : 'light'}
                   maxLevel={githubConfig.maxLevel}
@@ -193,11 +200,14 @@ export default function Github() {
                   }}
                   style={{
                     color: 'rgb(139, 148, 158)',
+                    width: '100% !important',
+                    height: 'auto !important',
+                    display: 'block',
                   }}
                 />
-              </div>
-            </div>
-          </div>
+             </div>
+            </CardContent>
+          </Card>
         )}
       </div>
     </Container>

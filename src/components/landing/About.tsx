@@ -1,4 +1,5 @@
 import { about, mySkills } from '@/config/About';
+import { PortfolioMode } from '@/stores/modeStore';
 import Image from 'next/image';
 import React from 'react';
 
@@ -6,7 +7,11 @@ import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
-export default function About() {
+interface AboutProps {
+  mode: PortfolioMode;
+}
+
+export default function About({}: AboutProps) {
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="About" heading="Me" />

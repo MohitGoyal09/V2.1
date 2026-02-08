@@ -15,7 +15,7 @@ export const projects: Project[] = [
     title: 'MemexLLM',
     description:
       'A production-ready RAG-powered document intelligence platform that enables users to upload documents, chat with AI using intelligent retrieval, and generate content with proper citations. Features hybrid search, reranking, and secure document processing.',
-    image: '/project/memexllm.jpg',
+    image: '/project/memexllm.png',
     video: '',
     link: 'https://memexllm.xyz',
     technologies: [

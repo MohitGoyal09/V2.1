@@ -1,6 +1,12 @@
-import { heroConfig, skillComponents, socialLinks } from '@/config/Hero';
+import {
+  heroConfig,
+  heroModeConfig,
+  skillComponents,
+  socialLinks,
+} from '@/config/Hero';
 import { parseTemplate } from '@/lib/hero';
 import { cn } from '@/lib/utils';
+import { PortfolioMode } from '@/stores/modeStore';
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import React from 'react';
@@ -17,8 +23,13 @@ const buttonIcons = {
   Chat: Chat,
 };
 
-export default function Hero() {
-  const { name, title, avatar, skills, description, buttons } = heroConfig;
+interface HeroProps {
+  mode: PortfolioMode;
+}
+
+export default function Hero({ mode }: HeroProps) {
+  const { name, title, avatar, skills, buttons } = heroConfig;
+  const description = heroModeConfig[mode].description;
 
   const renderDescription = () => {
     const parts = parseTemplate(description.template, skills);
@@ -81,10 +92,8 @@ export default function Hero() {
               key={index}
               variant={button.variant as 'outline' | 'default'}
               className={cn(
-                button.variant === 'outline' &&
-                  'inset-shadow-indigo-500',
-                button.variant === 'default' &&
-                  'inset-shadow-indigo-500',
+                button.variant === 'outline' && 'inset-shadow-indigo-500',
+                button.variant === 'default' && 'inset-shadow-indigo-500',
               )}
             >
               {IconComponent && <IconComponent />}

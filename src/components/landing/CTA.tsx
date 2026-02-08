@@ -2,6 +2,7 @@
 
 import { ctaConfig } from '@/config/CTA';
 import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
+import { PortfolioMode } from '@/stores/modeStore';
 import Cal, { getCalApi } from '@calcom/embed-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -16,6 +17,7 @@ import {
 } from '../ui/dialog';
 
 interface CallToActionProps {
+  mode: PortfolioMode;
   profileImage?: string;
   profileAlt?: string;
   linkText?: string;

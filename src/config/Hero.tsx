@@ -1,6 +1,9 @@
 import Github from '@/components/svgs/Github';
+import GoogleScholar from '@/components/svgs/GoogleScholar';
 import LinkedIn from '@/components/svgs/LinkedIn';
 import Mail from '@/components/svgs/Mail';
+import Medium from '@/components/svgs/Medium';
+import Peerlist from '@/components/svgs/Peerlist';
 import X from '@/components/svgs/X';
 import Crewai from '@/components/technologies/Crewai';
 import Docker from '@/components/technologies/Docker';
@@ -89,7 +92,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'Building production-grade AI systems with {skills:5}, {skills:6}, and {skills:2}. I implement models from scratch and deploy end-to-end systems focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
+      'Building production-grade AI systems with {skills:5}, {skills:6}, and {skills:2} I implement models from scratch and deploy end-to-end systems focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
   },
 
   // Buttons Configuration
@@ -109,6 +112,22 @@ export const heroConfig = {
   ],
 };
 
+// Mode-specific configurations
+export const heroModeConfig = {
+  engineering: {
+    description: {
+      template:
+        'Building production-grade AI systems with {skills:5}, {skills:6}, and {skills:2} I implement models from scratch and deploy end-to-end systems focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
+    },
+  },
+  research: {
+    description: {
+      template:
+        'Exploring architectures and training methodologies for large language models, with a focus on <b>parameter-efficient fine-tuning</b>, <b>instruction tuning</b>, and <b>geometric optimization</b> techniques.',
+    },
+  },
+};
+
 // Social Links Configuration
 export const socialLinks = [
   {
@@ -125,6 +144,21 @@ export const socialLinks = [
     name: 'Github',
     href: 'https://github.com/MohitGoyal09',
     icon: <Github />,
+  },
+  {
+    name: 'Medium',
+    href: 'https://medium.com/@mohit098',
+    icon: <Medium />,
+  },
+  {
+    name: 'Peerlist',
+    href: 'https://peerlist.io/rockerleo',
+    icon: <Peerlist />,
+  },
+  {
+    name: 'Google Scholar',
+    href: 'https://scholar.google.com/citations?hl=en&authuser=1&user=wyomNxMAAAAJ',
+    icon: <GoogleScholar />,
   },
   {
     name: 'Email',

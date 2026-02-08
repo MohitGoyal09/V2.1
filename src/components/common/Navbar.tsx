@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import Container from './Container';
+import ModeToggle from './ModeToggle';
 import { ThemeToggleButton } from './ThemeSwitch';
 
 export default function Navbar() {
@@ -33,6 +34,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-4">
+          <ModeToggle />
           <ThemeToggleButton variant="circle" start="top-right" blur />
         </div>
       </div>

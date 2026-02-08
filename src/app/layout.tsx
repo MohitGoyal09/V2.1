@@ -30,6 +30,7 @@ export default function RootLayout({
           >
             <ReactLenis root>
               <Navbar />
+              <div className="pointer-events-none fixed bottom-0 left-0 z-20 h-8 w-full backdrop-blur-sm" />
               {children}
               <OnekoCat />
               <Quote />
