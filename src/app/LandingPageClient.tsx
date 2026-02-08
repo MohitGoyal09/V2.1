@@ -40,6 +40,7 @@ export default function LandingPageClient({
     <Container className="min-h-screen py-16">
       <div className="space-y-16">
         {currentSections.map((section) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const SectionComponent = section.component as any;
           const sectionProps =
             section.id === 'blog'
