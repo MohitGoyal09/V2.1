@@ -168,9 +168,6 @@
 
 .animate-fade-in-blur {
   animation: fadeInBlur 0.5s ease-out forwards;
-  animation-delay: 0.3s;
-  opacity: 0.4;
-  filter: blur(3px);
 }
 
 /* Removed global View Transition API overrides to allow Skiper toggle styles to apply */

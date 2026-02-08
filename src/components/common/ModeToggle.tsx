@@ -8,17 +8,14 @@ import React, { useEffect, useState } from 'react';
 
 export default function ModeToggle() {
   const { mode, setMode } = useModeStore();
-  const [showHelper, setShowHelper] = useState(false);
+  const [showHelper, setShowHelper] = useState(true);
 
-  // Show helper on first visit
   useEffect(() => {
-    const hasSeenHelper = localStorage.getItem('mode-toggle-helper');
-    if (!hasSeenHelper) {
-      setShowHelper(true);
-      localStorage.setItem('mode-toggle-helper', 'true');
-      // Hide after 4 seconds
-      setTimeout(() => setShowHelper(false), 4000);
-    }
+    const timer = setTimeout(() => {
+      setShowHelper(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const modes: { id: PortfolioMode; icon: React.ReactNode; label: string }[] = [
