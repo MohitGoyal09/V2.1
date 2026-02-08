@@ -40,7 +40,7 @@ export default function LandingPageClient({
     <Container className="min-h-screen py-16">
       <div className="space-y-16">
         {currentSections.map((section) => {
-          const SectionComponent = section.component;
+          const SectionComponent = section.component as any;
           const sectionProps =
             section.id === 'blog'
               ? { ...section.props, posts: blogPosts }
