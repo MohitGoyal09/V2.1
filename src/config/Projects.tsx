@@ -50,7 +50,7 @@ export const projects: Project[] = [
       { name: 'Prisma', icon: <Prisma key="prisma" /> },
       { name: 'Vercel', icon: <Vercel key="vercel" /> },
     ],
-    github: 'https://github.com/MohitGoyal09/lms',
+    github: 'https://github.com/MohitGoyal09/guruji',
     live: 'https://lms-three-theta.vercel.app/',
     details: true,
     projectDetailsPageSlug: '/projects/artificial-guruji',

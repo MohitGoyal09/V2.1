@@ -6,7 +6,7 @@ export const models: Model[] = [
     title: 'LLaMA Implementation',
     description:
       'A PyTorch implementation of the LLaMA (Large Language Model Meta AI) architecture based on the paper "LLaMA: Open and Efficient Foundation Language Models" by Touvron et al.',
-    image: '/project/gradio.jpg',
+    image: '/models/llama.png',
     video: '',
     link: 'https://github.com/MohitGoyal09/llama-implementation',
     technologies: [
