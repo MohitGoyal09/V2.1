@@ -10,7 +10,7 @@ export interface Project {
   details: boolean;
   projectDetailsPageSlug: string;
   isWorking: boolean;
-  category: 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research';
+  category: 'full-stack' | 'frontend' | 'backend' | 'ml' | 'research' | 'ai';
   secondaryCategory?:
     | 'ml'
     | 'ai'

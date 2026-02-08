@@ -20,7 +20,7 @@ export function ResearchProjectCard({ project }: ResearchProjectCardProps) {
           {project.title}
         </h3>
         <Link
-          href={`/projects/${project.slug}`}
+          href={project.projectDetailsPageSlug}
           className="flex items-center gap-1 text-sm text-neutral-500 transition-colors hover:text-neutral-300"
         >
           <span>View</span>
@@ -40,9 +40,9 @@ export function ResearchProjectCard({ project }: ResearchProjectCardProps) {
             {project.category}
           </Badge>
         )}
-        {project.subcategory && (
+        {project.secondaryCategory && (
           <Badge variant="secondary" className="text-xs">
-            {project.subcategory}
+            {project.secondaryCategory}
           </Badge>
         )}
         {/* Research relevance indicators */}
