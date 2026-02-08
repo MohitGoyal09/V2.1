@@ -26,13 +26,13 @@ export default function Projects({ mode }: ProjectsProps) {
         const aRelevant = researchKeywords.some(
           (kw) =>
             a.category?.toLowerCase().includes(kw) ||
-            a.subcategory?.toLowerCase().includes(kw) ||
+            a.secondaryCategory?.toLowerCase().includes(kw) ||
             a.description?.toLowerCase().includes(kw),
         );
         const bRelevant = researchKeywords.some(
           (kw) =>
             b.category?.toLowerCase().includes(kw) ||
-            b.subcategory?.toLowerCase().includes(kw) ||
+            b.secondaryCategory?.toLowerCase().includes(kw) ||
             b.description?.toLowerCase().includes(kw),
         );
         return (bRelevant ? 1 : 0) - (aRelevant ? 1 : 0);
@@ -51,7 +51,7 @@ export default function Projects({ mode }: ProjectsProps) {
         // Research mode: compact, no images, research-focused
         <div className="mt-8 flex flex-col gap-4">
           {displayProjects.map((project) => (
-            <ResearchProjectCard key={project.slug} project={project} />
+            <ResearchProjectCard key={project.title} project={project} />
           ))}
         </div>
       ) : (
