@@ -3,6 +3,7 @@ import LinkedIn from '@/components/svgs/LinkedIn';
 import Mail from '@/components/svgs/Mail';
 import X from '@/components/svgs/X';
 import Crewai from '@/components/technologies/Crewai';
+import Docker from '@/components/technologies/Docker';
 import Fastapi from '@/components/technologies/Fastapi';
 import LangGraph from '@/components/technologies/LangGraph';
 import Langchain from '@/components/technologies/Langchain';
@@ -22,6 +23,7 @@ export const skillComponents = {
   Crewai: Crewai,
   LangGraph: LangGraph,
   Fastapi: Fastapi,
+  Docker: Docker,
 };
 
 export const heroConfig = {
@@ -48,9 +50,9 @@ export const heroConfig = {
       component: 'NextJs',
     },
     {
-      name: 'Bun',
-      href: 'https://bun.sh/',
-      component: 'Bun',
+      name: 'Docker',
+      href: 'https://www.docker.com/',
+      component: 'Docker',
     },
     {
       name: 'PostgreSQL',
@@ -87,7 +89,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'Building AI applications using {skills:5} {skills:6} {skills:9} & {skills:2} focusing on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>end-to-end deployment</b>. ',
+      'Building production-grade AI systems with {skills:5}, {skills:6}, and {skills:2}. I implement models from scratch and deploy end-to-end systems focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
   },
 
   // Buttons Configuration

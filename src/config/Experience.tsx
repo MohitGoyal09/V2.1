@@ -25,6 +25,7 @@ export interface Experience {
   x?: string;
   linkedin?: string;
   github?: string;
+  paper?: string;
   technologies: Technology[];
   isCurrent: boolean;
   isBlur?: boolean;
@@ -38,7 +39,10 @@ export const experiences: Experience[] = [
     location: 'United States (Remote)',
     image: '/company/c3alabs.jpg',
     description: [
-      '*Currently:* Contributing to the development of a scalable and efficient AI agents using Langchain, LangGraph, and Next.js.',
+      '*Built and deployed production-grade AI systems* at C3ALabs, focusing on reliability, latency, and real-user usage not demos.',
+      '*Developed agentic AI features* (artifacts, agent skills, multi-agent orchestration) and shipped them to production, ensuring performance under real-world constraints.',
+      '*Designed and productionized advanced RAG pipelines* using Google File Search APIs, handling document chunking, retrieval quality, and response grounding in production environments.',
+      '*Core contributor to applied AI R&D* experimented with Claude skills, MCP-based tool routing (Composio), and multi-agent coordination patterns, turning research ideas into deployable systems.',
     ],
     startDate: 'October 2025',
     endDate: 'Present',
@@ -78,16 +82,16 @@ export const experiences: Experience[] = [
     location: 'Louisville, US (Remote)',
     image: '/company/raapid.png',
     description: [
-      '*Worked on Large Language Model (LLM) fine-tuning* and co-authored a research paper introducing a novel instruction tuning framework.',
-      '*Co-developed GRIT (Geometric Reprojection Instruction Tuning)*, a novel framework that fine-tunes only *0.997% of LLM parameters* while outperforming full fine-tuning and LoRA on standard benchmarks (*BLEU ↑26.2, ROUGE-L ↑34.9 on Alpaca*).',
-      'Fine-tuned multiple LLMs (*GPT-2 355M, LLaMA-3B, Mistral-7B*) achieving **30% parameter savings** with **40% reduction in compute & memory costs**, without compromising accuracy.',
-      'Conducted extensive ablation studies, validating GRIT’s *geometry-aware updates* with **+2.1 BLEU and +2.5 ROUGE-L gains** over LoRA, QLoRA, and AdaLoRA.',
-      'Benchmarked GRIT across diverse NLP tasks (*abstractive QA, classification, reasoning*) on datasets such as **Alpaca, Dolly-15k, BoolQ, GSM8K**, consistently outperforming existing parameter-efficient tuning methods.',
-      'Collaborated on research paper drafting, presenting *GRIT as a scalable and efficient alternative* for instruction tuning in large-scale LLMs.',
+      '*Co-authored a research paper on Large Language Model (LLM) fine-tuning* - <a href="https://arxiv.org/abs/2601.00231" target="_blank" class="text-blue-400 hover:underline">arXiv:2601.00231</a>',
+      '*Developed GRIT (Geometric Reprojection Instruction Tuning)* a framework fine-tuning only *0.997% of LLM parameters* while *outperforming full fine-tuning and LoRA* on standard benchmarks.',
+      '*Fine-tuned multiple LLMs* (GPT-2 355M, LLaMA-3B, Mistral-7B) achieving *30% parameter savings* with *40% reduction in compute & memory costs* without compromising accuracy.',
+      "*Conducted extensive ablation studies* validating GRIT's *geometry-aware updates* over LoRA, QLoRA, and AdaLoRA.",
+      '*Benchmarked GRIT* across diverse NLP tasks on datasets including Alpaca, Dolly-15k, BoolQ, and GSM8K.',
     ],
     startDate: 'April 2025',
     endDate: 'Present',
     website: 'https://www.raapidinc.com/',
+    paper: 'https://arxiv.org/abs/2601.00231',
     technologies: [
       {
         name: 'Pytorch',

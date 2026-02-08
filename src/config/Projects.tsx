@@ -1,4 +1,6 @@
+import Fastapi from '@/components/technologies/Fastapi';
 import NextJs from '@/components/technologies/NextJs';
+import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Prisma from '@/components/technologies/Prisma';
 import Pytorch from '@/components/technologies/Pytorch';
 import ReactIcon from '@/components/technologies/ReactIcon';
@@ -9,6 +11,29 @@ import Vercel from '@/components/technologies/Vercel';
 import { Project } from '@/types/project';
 
 export const projects: Project[] = [
+  {
+    title: 'MemexLLM',
+    description:
+      'A production-ready RAG-powered document intelligence platform that enables users to upload documents, chat with AI using intelligent retrieval, and generate content with proper citations. Features hybrid search, reranking, and secure document processing.',
+    image: '/project/memexllm.jpg',
+    video: '',
+    link: 'https://memexllm.xyz',
+    technologies: [
+      { name: 'Next.js 16', icon: <NextJs key="nextjs" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'FastAPI', icon: <Fastapi key="fastapi" /> },
+      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
+    ],
+    github: 'https://github.com/MohitGoyal09/memexllm',
+    live: 'https://memexllm.xyz',
+    details: true,
+    projectDetailsPageSlug: '/projects/memexllm',
+    isWorking: true,
+    category: 'full-stack',
+    secondaryCategory: 'ai',
+  },
   {
     title: 'Artificial Guruji',
     description:

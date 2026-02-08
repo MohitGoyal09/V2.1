@@ -8,6 +8,7 @@ import Skill from '../common/Skill';
 import ChevronDown from '../svgs/ChevronDown';
 import Github from '../svgs/Github';
 import LinkedIn from '../svgs/LinkedIn';
+import Paper from '../svgs/Paper';
 import Website from '../svgs/Website';
 import X from '../svgs/X';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
@@ -22,7 +23,11 @@ const parseDescription = (text: string): string => {
   return text.replace(/\*(.*?)\*/g, '<b>$1</b>');
 };
 
-export function ExperienceCard({ experience, isCollapsed = false, onToggle }: ExperienceCardProps) {
+export function ExperienceCard({
+  experience,
+  isCollapsed = false,
+  onToggle,
+}: ExperienceCardProps) {
   return (
     <div className="flex flex-col gap-4">
       {/* Company Header */}
@@ -102,6 +107,20 @@ export function ExperienceCard({ experience, isCollapsed = false, onToggle }: Ex
                   <TooltipContent>View GitHub</TooltipContent>
                 </Tooltip>
               )}
+              {experience.paper && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={experience.paper}
+                      target="_blank"
+                      className="size-4 text-neutral-500"
+                    >
+                      <Paper />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>View Paper</TooltipContent>
+                </Tooltip>
+              )}
               {experience.isCurrent && (
                 <div className="flex items-center gap-1 rounded-md border-green-300 bg-green-500/10 px-2 py-1 text-xs">
                   <div className="size-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -113,11 +132,11 @@ export function ExperienceCard({ experience, isCollapsed = false, onToggle }: Ex
                   onClick={onToggle}
                   className="ml-2 size-4 text-neutral-500 hover:text-neutral-300 transition-colors"
                 >
-                  <ChevronDown 
+                  <ChevronDown
                     className={cn(
-                      "transition-transform duration-200",
-                      isCollapsed ? "rotate-0" : "rotate-180"
-                    )} 
+                      'transition-transform duration-200',
+                      isCollapsed ? 'rotate-0' : 'rotate-180',
+                    )}
                   />
                 </button>
               )}
