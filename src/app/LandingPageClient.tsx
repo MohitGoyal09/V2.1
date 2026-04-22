@@ -1,10 +1,11 @@
 'use client';
 
 import Container from '@/components/common/Container';
+import { mergeModeIntoQuery } from '@/lib/mode';
 import { sectionConfigs } from '@/config/sections';
 import { PortfolioMode, useModeStore } from '@/stores/modeStore';
 import { BlogPostPreview } from '@/types/blog';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -19,6 +20,7 @@ export default function LandingPageClient({
 }: LandingPageClientProps) {
   const { mode, setMode } = useModeStore();
   const router = useRouter();
+  const prefersReducedMotion = useReducedMotion();
 
   // Sync mode from URL on initial load without suspending SSR.
   useEffect(() => {
@@ -29,14 +31,15 @@ export default function LandingPageClient({
 
   // Update URL when mode changes while preserving other query params.
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const currentSearch = window.location.search;
+    const params = new URLSearchParams(currentSearch);
 
     if (params.get('mode') === mode) {
       return;
     }
 
-    params.set('mode', mode);
-    router.replace(`?${params.toString()}`, { scroll: false });
+    const nextSearch = mergeModeIntoQuery(currentSearch, mode);
+    router.replace(nextSearch, { scroll: false });
   }, [mode, router]);
 
   const currentSections = sectionConfigs[mode];
@@ -56,7 +59,9 @@ export default function LandingPageClient({
               key={`${mode}-${section.id}`}
               layout
               transition={{
-                layout: { duration: 0.4, ease: 'easeInOut' },
+                layout: prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.2, ease: 'easeOut' },
               }}
             >
               <SectionComponent mode={mode} {...sectionProps} />

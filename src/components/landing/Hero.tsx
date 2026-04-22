@@ -28,8 +28,12 @@ interface HeroProps {
 }
 
 export default function Hero({ mode }: HeroProps) {
-  const { name, title, avatar, skills, buttons } = heroConfig;
-  const description = heroModeConfig[mode].description;
+  const { name, title, avatar, skills } = heroConfig;
+  const modeConfig = heroModeConfig[mode];
+  const description = modeConfig.description;
+  const buttons = modeConfig.buttons ?? heroConfig.buttons;
+
+  const modeLabel = mode === 'engineering' ? 'Engineering Focus' : 'Research Focus';
 
   const renderDescription = () => {
     const parts = parseTemplate(description.template, skills);
@@ -72,12 +76,33 @@ export default function Hero({ mode }: HeroProps) {
       />
 
       {/* Text Area */}
-      <div className="mt-8 flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">
-          Hi, I&apos;m {name} - <span className="text-secondary">{title}</span>
+      <div className="mt-8 flex flex-col gap-3">
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          {modeLabel}
+        </span>
+
+        <h1
+          className={cn(
+            'text-4xl font-bold leading-tight',
+            mode === 'engineering' ? 'text-foreground' : 'text-foreground/95',
+          )}
+        >
+          Hi, I&apos;m {name} -
+          <span
+            className={cn(
+              'ml-2',
+              mode === 'engineering' ? 'text-secondary' : 'text-primary',
+            )}
+          >
+            {title}
+          </span>
         </h1>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-2 text-base md:text-lg text-neutral-500 whitespace-pre-wrap">
+        <div
+          className={cn(
+            'mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-2 whitespace-pre-wrap text-base leading-relaxed text-neutral-500 md:text-lg md:leading-relaxed',
+          )}
+        >
           {renderDescription()}
         </div>
       </div>

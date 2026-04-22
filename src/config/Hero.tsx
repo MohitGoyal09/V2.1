@@ -31,7 +31,7 @@ export const skillComponents = {
 
 export const heroConfig = {
   // Personal Information
-  name: 'Mohit ',
+  name: 'Mohit',
   title: 'ML Engineer & Full Stack AI Developer',
   avatar: '/assets/logo.png',
 
@@ -92,7 +92,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'Building production-grade AI systems with {skills:5}, {skills:6}, and {skills:2} I implement models from scratch and deploy end-to-end systems focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
+      'Building production-grade AI systems with {skills:5}, {skills:6} and {skills:2} I design and deploy end-to-end solutions focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
   },
 
   // Buttons Configuration
@@ -117,14 +117,42 @@ export const heroModeConfig = {
   engineering: {
     description: {
       template:
-        'Building production-grade AI systems with {skills:5}, {skills:6}, and {skills:2} I implement models from scratch and deploy end-to-end systems focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
+        'Building production-grade AI systems with {skills:5}, {skills:6} and {skills:2} I design and deploy end-to-end solutions focused on <b>LLM agents</b>, <b>RAG pipelines</b>, and <b>scalable AI infrastructure</b>.',
     },
+    buttons: [
+      {
+        variant: 'outline',
+        text: 'Resume / CV',
+        href: '/resume',
+        icon: 'CV',
+      },
+      {
+        variant: 'default',
+        text: 'Explore Projects',
+        href: '/projects',
+        icon: 'Chat',
+      },
+    ],
   },
   research: {
     description: {
       template:
-        'Exploring architectures and training methodologies for large language models, with a focus on <b>parameter-efficient fine-tuning</b>, <b>instruction tuning</b>, and <b>geometric optimization</b> techniques.',
+        'I lead applied LLM research with {skills:5}, {skills:6} and {skills:8}, advancing <b>parameter-efficient fine-tuning</b>, <b>reinforcement learning (RLHF)</b>, <b>systematic evaluation</b> and <b>inference serving optimization</b> for production-grade reliability.',
     },
+    buttons: [
+      {
+        variant: 'outline',
+        text: 'Resume / CV',
+        href: '/resume',
+        icon: 'CV',
+      },
+      {
+        variant: 'default',
+        text: 'Explore Research',
+        href: '/models',
+        icon: 'Chat',
+      },
+    ],
   },
 };
 

@@ -12,11 +12,11 @@ import { ViewTransitions } from 'next-view-transitions';
 import './globals.css';
 
 const serverStorageShim = {
-  getItem: (_key: string) => null,
-  setItem: (_key: string, _value: string) => undefined,
-  removeItem: (_key: string) => undefined,
+  getItem: () => null,
+  setItem: () => undefined,
+  removeItem: () => undefined,
   clear: () => undefined,
-  key: (_index: number) => null,
+  key: () => null,
   length: 0,
 };
 

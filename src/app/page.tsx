@@ -1,20 +1,21 @@
 import { getPublishedBlogPosts } from '@/lib/blog';
+import { parseMode } from '@/lib/mode';
 import { PortfolioMode } from '@/stores/modeStore';
 
 import LandingPageClient from './LandingPageClient';
 
 interface LandingPageProps {
-  searchParams?: {
+  searchParams?: Promise<{
     mode?: string;
-  };
+  }>;
 }
 
-const getInitialMode = (mode?: string): PortfolioMode =>
-  mode === 'research' ? 'research' : 'engineering';
-
-export default function LandingPage({ searchParams }: LandingPageProps) {
+export default async function LandingPage({
+  searchParams,
+}: LandingPageProps) {
   const blogPosts = getPublishedBlogPosts();
-  const initialMode = getInitialMode(searchParams?.mode);
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const initialMode: PortfolioMode = parseMode(resolvedSearchParams?.mode);
 
   return <LandingPageClient blogPosts={blogPosts} initialMode={initialMode} />;
 }
