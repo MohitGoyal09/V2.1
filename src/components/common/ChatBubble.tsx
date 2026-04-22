@@ -28,15 +28,19 @@ interface Message {
   isStreaming?: boolean;
 }
 
+const formatMessageTimestamp = (date: Date = new Date()): string =>
+  date.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
 const initialMessages: Message[] = [
   {
     id: 1,
     text: "Hello! I'm Mohit's Portfolio Assistant. How can I help you?",
     sender: 'bot',
-    timestamp: new Date().toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    }),
+    // Keep SSR output deterministic to avoid hydration mismatch.
+    timestamp: '--:--',
   },
 ];
 
@@ -72,10 +76,7 @@ const ChatBubble: React.FC = () => {
       id: Date.now(),
       text: messageText,
       sender: 'user',
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
+      timestamp: formatMessageTimestamp(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -88,10 +89,7 @@ const ChatBubble: React.FC = () => {
       id: botMessageId,
       text: '',
       sender: 'bot',
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
+      timestamp: formatMessageTimestamp(),
       isStreaming: true,
     };
 
@@ -120,10 +118,7 @@ const ChatBubble: React.FC = () => {
       id: Date.now(),
       text: suggestion,
       sender: 'user',
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
+      timestamp: formatMessageTimestamp(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -135,10 +130,7 @@ const ChatBubble: React.FC = () => {
       id: botMessageId,
       text: '',
       sender: 'bot',
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
+      timestamp: formatMessageTimestamp(),
       isStreaming: true,
     };
 
@@ -299,6 +291,7 @@ const ChatBubble: React.FC = () => {
                       <div className="flex-1 prose prose-sm max-w-none dark:prose-invert">
                         {message.text ? (
                           <ReactMarkdown
+                            skipHtml
                             components={{
                               a: (props) => (
                                 <a
