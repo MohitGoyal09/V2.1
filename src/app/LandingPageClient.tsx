@@ -5,34 +5,39 @@ import { sectionConfigs } from '@/config/sections';
 import { PortfolioMode, useModeStore } from '@/stores/modeStore';
 import { BlogPostPreview } from '@/types/blog';
 import { motion } from 'framer-motion';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 interface LandingPageClientProps {
   blogPosts: BlogPostPreview[];
+  initialMode: PortfolioMode;
 }
 
 export default function LandingPageClient({
   blogPosts,
+  initialMode,
 }: LandingPageClientProps) {
   const { mode, setMode } = useModeStore();
-  const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Sync URL with mode on initial load
+  // Sync mode from URL on initial load without suspending SSR.
   useEffect(() => {
-    const urlMode = searchParams.get('mode') as PortfolioMode | null;
-    if (urlMode && ['engineering', 'research'].includes(urlMode)) {
-      setMode(urlMode);
+    if (mode !== initialMode) {
+      setMode(initialMode);
     }
-  }, [searchParams, setMode]);
+  }, [initialMode, mode, setMode]);
 
-  // Update URL when mode changes
+  // Update URL when mode changes while preserving other query params.
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('mode') === mode) {
+      return;
+    }
+
     params.set('mode', mode);
     router.replace(`?${params.toString()}`, { scroll: false });
-  }, [mode, router, searchParams]);
+  }, [mode, router]);
 
   const currentSections = sectionConfigs[mode];
 

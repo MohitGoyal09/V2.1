@@ -11,6 +11,28 @@ import { ViewTransitions } from 'next-view-transitions';
 
 import './globals.css';
 
+const serverStorageShim = {
+  getItem: (_key: string) => null,
+  setItem: (_key: string, _value: string) => undefined,
+  removeItem: (_key: string) => undefined,
+  clear: () => undefined,
+  key: (_index: number) => null,
+  length: 0,
+};
+
+if (typeof window === 'undefined') {
+  const nodeGlobal = globalThis as typeof globalThis & {
+    localStorage?: Partial<Storage>;
+  };
+
+  if (
+    nodeGlobal.localStorage &&
+    typeof nodeGlobal.localStorage.getItem !== 'function'
+  ) {
+    nodeGlobal.localStorage = serverStorageShim;
+  }
+}
+
 export const metadata = getMetadata('/');
 
 export default function RootLayout({

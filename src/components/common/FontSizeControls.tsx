@@ -17,9 +17,25 @@ export default function FontSizeControls() {
   const [fontSize, setFontSize] = useState<number>(16);
   const { triggerHaptic, isMobile } = useHapticFeedback();
 
+  const getStorage = (): Storage | null => {
+    if (typeof window === 'undefined') return null;
+    const storage = window.localStorage;
+    if (
+      storage &&
+      typeof storage.getItem === 'function' &&
+      typeof storage.setItem === 'function'
+    ) {
+      return storage;
+    }
+    return null;
+  };
+
   // Load font size from localStorage on mount
   useEffect(() => {
-    const savedFontSize = localStorage.getItem('blog-font-size');
+    const storage = getStorage();
+    if (!storage) return;
+
+    const savedFontSize = storage.getItem('blog-font-size');
     if (savedFontSize) {
       const size = parseInt(savedFontSize, 10);
       setFontSize(size);
@@ -42,7 +58,8 @@ export default function FontSizeControls() {
     const clampedSize = Math.max(12, Math.min(24, newSize));
     setFontSize(clampedSize);
     applyFontSize(clampedSize);
-    localStorage.setItem('blog-font-size', clampedSize.toString());
+    const storage = getStorage();
+    storage?.setItem('blog-font-size', clampedSize.toString());
   };
 
   const handleIncrease = () => {

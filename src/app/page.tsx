@@ -1,15 +1,20 @@
 import { getPublishedBlogPosts } from '@/lib/blog';
+import { PortfolioMode } from '@/stores/modeStore';
 
 import LandingPageClient from './LandingPageClient';
 
-import { Suspense } from 'react';
+interface LandingPageProps {
+  searchParams?: {
+    mode?: string;
+  };
+}
 
-export default function LandingPage() {
+const getInitialMode = (mode?: string): PortfolioMode =>
+  mode === 'research' ? 'research' : 'engineering';
+
+export default function LandingPage({ searchParams }: LandingPageProps) {
   const blogPosts = getPublishedBlogPosts();
+  const initialMode = getInitialMode(searchParams?.mode);
 
-  return (
-    <Suspense>
-      <LandingPageClient blogPosts={blogPosts} />
-    </Suspense>
-  );
+  return <LandingPageClient blogPosts={blogPosts} initialMode={initialMode} />;
 }
